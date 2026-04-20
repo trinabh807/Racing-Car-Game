@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>PIXEL RACER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-wrap">
+    <canvas id="game-canvas"></canvas>
+    <div id="mobile-controls">
+      <div class="ctrl-col">
+        <button id="btn-up"    class="ctrl-btn ctrl-sm" aria-label="Faster">▲</button>
+        <button id="btn-left"  class="ctrl-btn" aria-label="Left">◀</button>
+        <button id="btn-down"  class="ctrl-btn ctrl-sm" aria-label="Brake">▼</button>
+      </div>
+      <button id="btn-right" class="ctrl-btn" aria-label="Right">▶</button>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>

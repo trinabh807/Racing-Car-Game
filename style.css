@@ -1,0 +1,112 @@
+/* ══════════════════════════════════════
+   PIXEL RACER — style.css
+   Arcade cabinet aesthetic
+══════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --glow-blue:   rgba(0, 120, 255, 0.35);
+  --glow-strong: rgba(0, 80, 255, 0.15);
+  --bg-dark:     #080810;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--bg-dark);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(0,40,100,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(60,0,100,0.18) 0%, transparent 55%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* ── Scanline overlay ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.06) 2px,
+    rgba(0,0,0,0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 999;
+}
+
+#game-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+#game-canvas {
+  display: block;
+  border: 3px solid #1a1a3a;
+  border-radius: 4px;
+  box-shadow:
+    0 0 0 1px #0a0a20,
+    0 0 30px var(--glow-blue),
+    0 0 80px var(--glow-strong),
+    inset 0 0 20px rgba(0,0,0,0.5);
+  /* Scale to fit viewport height */
+  max-height: calc(100vh - 80px);
+  width: auto;
+  image-rendering: pixelated;
+}
+
+/* ── Mobile controls ── */
+#mobile-controls {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.ctrl-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.ctrl-sm {
+  font-size: 14px !important;
+  padding: 8px 22px !important;
+}
+
+.ctrl-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 20px;
+  padding: 14px 32px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.5);
+  border: 2px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  transition: background 0.08s, color 0.08s, border-color 0.08s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ctrl-btn:active,
+.ctrl-btn.pressed {
+  background: rgba(80,160,255,0.2);
+  color: rgba(120,200,255,0.9);
+  border-color: rgba(80,160,255,0.4);
+  box-shadow: 0 0 12px rgba(80,160,255,0.3);
+}
+
+/* Hide mobile controls on large screens */
+@media (min-width: 700px) {
+  #mobile-controls { display: none; }
+}
